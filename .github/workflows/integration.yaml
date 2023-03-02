@@ -13,7 +13,7 @@ jobs:
         ports:
           - 5000:5000
         volumes:
-          - $GITHUB_WORKSPACE:/app/
+          - /home/runner/:/app/
         options: --entrypoint 'entry.sh'
         
 
@@ -23,6 +23,7 @@ jobs:
 
       - name: Connect to http
         run: |
+          pwd 
           curl -X GET 0.0.0.0:5000/image_creation/images/download/jja
 
 
