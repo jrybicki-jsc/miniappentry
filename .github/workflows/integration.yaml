@@ -1,0 +1,29 @@
+name: Integration tests
+
+on: [push]
+
+
+jobs:
+  runner-job:
+    runs-on: ubuntu-latest
+
+    services:
+      openssh-server:
+        image: tiangolo/uwsgi-nginx-flask:python3.8-alpine
+        ports:
+          - 5000:5000
+        volumes:
+          - /home/runner/sshdir/sshdir:/tmps/
+          - $GITHUB_WORKSPACE:/app/
+        options: -- entrypoint 'python /app/builder_service.py'
+        
+
+    steps:
+      - uses: actions/checkout@v3
+
+
+      - name: Connect to http
+        run: |
+          curl -X GET 0.0.0.0:5000/image_creation/images/download/jja
+
+
