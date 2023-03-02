@@ -13,9 +13,8 @@ jobs:
         ports:
           - 5000:5000
         volumes:
-          - /home/runner/sshdir/sshdir:/tmps/
           - $GITHUB_WORKSPACE:/app/
-        options: -- entrypoint 'python /app/builder_service.py'
+        options: --entrypoint 'entry.sh'
         
 
     steps:

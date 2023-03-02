@@ -12,7 +12,7 @@ repositories_cfg = {
     }
 
 build_cfg = {
-    "tmp_folder":"/tmp/images", 
+    "tmp_folder":"./", 
     "builder_home": "/tmp/image_creation/", 
     "base_image": "spack_base", 
     "dockerfile": "Dockerfile.spack", 
